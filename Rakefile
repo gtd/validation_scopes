@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "validation_scopes"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Create sets of validations independent of the life-cycle of an ActiveRecord object}
+    gem.description = %Q{Define additional sets of validations beyond the standard "errors" that is tied to the ActiveRecord life-cycle.  These additional sets can be defined with all the standard ActiveRecord::Validation macros, and the resulting collection is a standard ActiveRecord::Errors object.}
     gem.email = "gabe@websaviour.com"
     gem.homepage = "http://github.com/dasil003/validation_scopes"
     gem.authors = ["Gabe da Silveira"]
