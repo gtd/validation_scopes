@@ -1,3 +1,4 @@
+require 'delegate'
 require 'active_record'
 
 module ValidationScopes

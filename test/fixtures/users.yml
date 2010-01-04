@@ -1,0 +1,13 @@
+one:
+  id: 1
+  name: Gabe da Silveira
+  email: gabe@websaviour.com
+  age: 31
+  bio: Technical web creative
+sponsored:
+  id: 2
+  name: Sven Pulpello
+  email: sven@funk.com
+  age: 3
+  bio: Alter-ego extraordinaire
+  sponsor_id: 1

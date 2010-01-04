@@ -6,5 +6,14 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'validation_scopes'
 
-class Test::Unit::TestCase
-end
+ActiveRecord::Base.establish_connection(
+  :adapter  => "sqlite3",
+  :database => ":memory:"
+)
+
+require 'db/schema.rb'
+
+Dir['test/models/*.rb'].each { |f| require f }
+
+require 'active_record/fixtures'
+Fixtures.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)
