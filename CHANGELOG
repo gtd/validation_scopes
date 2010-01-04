@@ -1,3 +1,7 @@
+== 0.3.0 2009-01-04
+
+* Fixed problem with DelegateClass not picking up method definitions that come after the validation_scope block.
+
 == 0.2.0 2009-01-04
 
 * Added basic unit tests using in-memory sqlite3
