@@ -1,3 +1,7 @@
-== 0.1.0
+== 0.2.0 2009-01-04
+
+* Added basic unit tests using in-memory sqlite3
+
+== 0.1.0 2009-01-03
 
 * Initial release.  Only tested within an app.  Probably has lots of bugs.  Test suite forthcoming.
