@@ -24,7 +24,7 @@ All standard `ActiveRecord::Validations` should work.
 
 ## Caveats
 
-Due to the use of a proxy DelegateClass to store each additional set of validations, there are some edge cases that don't work perfectly (I'm working to resolve them, patches/forks welcome).  The biggest problem is that validation methods must be defined before the validation_scope block.  I believe this is a peculiarity of the way that DelegateClass works (see Implementation notes below):
+Due to the use of a proxy DelegateClass to store each additional set of validations, there are some edge cases that don't work perfectly.  The biggest problem is that any methods your validations need must be defined before the validation_scope block.  The reason for this is that the ruby Delegate library determines the methods to be delegated the time the DelegateClass is defined, which happens at the time of the validation_scope is declared.  Therefore:
 
     class Film < ActiveRecord::Base
       validation_scope :warnings do |s|
@@ -47,6 +47,8 @@ Instead the following (smelly) order is necessary:
         s.validate :ensure_title_is_happy
       end
     end
+
+I'm trying to find a workaround such as deferring the DelegateClass declaration.  Suggestions/patches are welcome.
 
 
 ## Implementation
