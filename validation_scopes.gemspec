@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{validation_scopes}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Gabe da Silveira"]
@@ -25,8 +25,12 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/validation_scopes.rb",
+     "test/db/schema.rb",
+     "test/fixtures/users.yml",
      "test/helper.rb",
-     "test/test_validation_scopes.rb"
+     "test/models/user.rb",
+     "test/test_validation_scopes.rb",
+     "validation_scopes.gemspec"
   ]
   s.homepage = %q{http://github.com/dasil003/validation_scopes}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -34,7 +38,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Create sets of validations independent of the life-cycle of an ActiveRecord object}
   s.test_files = [
-    "test/helper.rb",
+    "test/db/schema.rb",
+     "test/helper.rb",
+     "test/models/user.rb",
      "test/test_validation_scopes.rb"
   ]
 
