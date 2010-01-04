@@ -21,6 +21,12 @@ class TestValidationScopes < Test::Unit::TestCase
       assert @user.warnings.on(:age)
     end
 
+    should "raise warning for inline validation" do
+      @user.sponsor_id = 12345
+      assert @user.has_warnings?
+      assert @user.warnings.on(:sponsor_id)
+    end
+
     should "not add warning to main errors instance" do
       @user.email = ''
       assert @user.has_warnings?
@@ -37,13 +43,15 @@ class TestValidationScopes < Test::Unit::TestCase
     context "validating alerts with a private method" do
       setup do
         @user.age = 100
+        @user.email = "zappa@hotmail.com"
       end
 
       should "set alerts but not errors" do
-        assert @user.has_alerts?
-        assert @user.alerts.on(:base)
-        assert @user.valid?
-        assert @user.errors.empty?
+        assert @user.has_alerts?, "no alerts raised"
+        assert @user.alerts.on(:base), "centenarian alert not raised"
+        assert @user.alerts.on(:email), "hotmail alert not raised"
+        assert @user.valid?, "user not valid"
+        assert @user.errors.empty?, "user errors not empty"
       end
     end
   end
