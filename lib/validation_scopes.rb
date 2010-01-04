@@ -8,21 +8,26 @@ module ValidationScopes
 
   module ClassMethods
     def validation_scope(scope)
-      proxy_class = Class.new(DelegateClass(self)) do
-        include ActiveRecord::Validations
+      base_class = self
+      deferred_proxy_class_declaration = Proc.new do
+        proxy_class = Class.new(DelegateClass(base_class)) do
+          include ActiveRecord::Validations
 
-        def initialize(record)
-          @base_record = record
-          super(record)
+          def initialize(record)
+            @base_record = record
+            super(record)
+          end
+
+          # Hack since DelegateClass doesn't seem to be making AR::Base class methods available.
+          def errors
+            @errors ||= ActiveRecord::Errors.new(@base_record)
+          end
         end
 
-        # Hack since DelegateClass doesn't seem to be making AR::Base class methods available.
-        def errors
-          @errors ||= ActiveRecord::Errors.new(@base_record)
-        end
+        yield proxy_class
+
+        proxy_class
       end
-
-      yield proxy_class
 
       define_method(scope) do
         send("validation_scope_proxy_for_#{scope}").errors
@@ -38,7 +43,8 @@ module ValidationScopes
 
       define_method("init_validation_scope_for_#{scope}") do
         unless instance_variable_defined?("@#{scope}")
-          instance_variable_set("@#{scope}", proxy_class.new(self))
+          klass = deferred_proxy_class_declaration.call
+          instance_variable_set("@#{scope}", klass.new(self))
         end
       end
 

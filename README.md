@@ -24,31 +24,11 @@ All standard `ActiveRecord::Validations` should work.
 
 ## Caveats
 
-Due to the use of a proxy DelegateClass to store each additional set of validations, there are some edge cases that don't work perfectly.  The biggest problem is that any methods your validations need must be defined before the validation_scope block.  The reason for this is that the ruby Delegate library determines the methods to be delegated the time the DelegateClass is defined, which happens at the time of the validation_scope is declared.  Therefore:
+Due to the use of a proxy DelegateClass to store each additional set of validations, and some heavy meta-programming to tie it all together with a clean API, there are likely to be some unexpected and confusing edge cases.  Please let me know if you discover anything wonky.  I believe the opacity of the solution is worth the convenience it provides in exposing the entirety of the Validations API.
 
-    class Film < ActiveRecord::Base
-      validation_scope :warnings do |s|
-        s.validate :ensure_title_is_happy
-      end
+### Don't use private methods
 
-      def ensure_title_is_happy
-        warnings.add_to_base "Title is NOT happy" if unhappy?
-      end
-    end
-
-Instead the following (smelly) order is necessary:
-
-    class Film < ActiveRecord::Base
-      def ensure_title_is_happy
-        warnings.add_to_base "Title is NOT happy" if unhappy?
-      end
-
-      validation_scope :warnings do |s|
-        s.validate :ensure_title_is_happy
-      end
-    end
-
-I'm trying to find a workaround such as deferring the DelegateClass declaration.  Suggestions/patches are welcome.
+Because the any validation method supplied as a symbol (eg. `validate :verify_something`) is actually running in the context of a delegate class, private methods won't work as they would in standard validations.
 
 
 ## Implementation
