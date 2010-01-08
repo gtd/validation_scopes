@@ -36,15 +36,18 @@ The generated scope produces 3 helper methods based on the symbol passed to the 
     film.warnings       # analagous to film.errors
     => #<ActiveRecord::Errors>
 
-    f.warnings.full_messages
+    film.warnings.full_messages
     => ["Title should be capitalized", "Inline warning"]
 
-    f.errors.full_messages
+    film.errors.full_messages
     => []
 
-    f.save
+    film.save
     => true
 
+One rough edge at the moment is when you want to use the builtin `error_messages_for` helper in your views.  That helper does not accept an `ActiveRecord::Errors` object directly.  Instead you need to pass it the proxy object that `ValidationScopes` creates to encapsulate the generated error set:
+
+    error_messages_for :object => film.validation_scope_proxy_for_warnings
 
 ## Installation
 
