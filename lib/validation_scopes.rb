@@ -11,7 +11,10 @@ module ValidationScopes
       base_class = self
       deferred_proxy_class_declaration = Proc.new do
         proxy_class = Class.new(DelegateClass(base_class)) do
-          include ActiveRecord::Validations
+          validations_module = defined?(ActiveModel) ? ActiveModel::Validations : ActiveRecord::Validations
+          errors_class = defined?(ActiveModel) ? ActiveModel::Errors : ActiveRecord::Errors
+
+          include validations_module
 
           def initialize(record)
             @base_record = record
@@ -19,8 +22,8 @@ module ValidationScopes
           end
 
           # Hack since DelegateClass doesn't seem to be making AR::Base class methods available.
-          def errors
-            @errors ||= ActiveRecord::Errors.new(@base_record)
+          define_method("errors") do
+            @errors ||= errors_class.new(@base_record)
           end
         end
 

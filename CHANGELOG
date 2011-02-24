@@ -1,3 +1,7 @@
+== 0.3.1 2011-02-24
+
+* Added Rails3 compatibility
+
 == 0.3.0 2009-01-04
 
 * Fixed problem with DelegateClass not picking up method definitions that come after the validation_scope block.
