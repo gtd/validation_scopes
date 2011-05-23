@@ -1,7 +1,7 @@
 # Validation Scopes
 
 **Note:** *This is the rails2 branch of the plugin.  See ongoing development for rails3 at
-http://github.com/dasil003/validation_scopes/master*
+https://github.com/dasil003/validation_scopes*
 
 This gem adds a simple class method `validation_scope` to ActiveRecord.  This generates a new collection of
 `ActiveRecord::Errors` that can be manipulated independently of the standard `errors`, `valid?` and `save` methods.  The
