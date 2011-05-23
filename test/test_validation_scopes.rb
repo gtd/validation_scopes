@@ -57,12 +57,20 @@ class TestValidationScopes < Test::Unit::TestCase
   end
 
   context "proxy class" do
+    setup do
+      @user = User.find(1)
+    end
+
     # Because error_messages_for in dynamic_model gem calls this and delegation
     # causes base object to be returned, thus losing scoped errors.
     should "return self for to_model" do
-      @user = User.find(1)
       assert_equal @user.validation_scope_proxy_for_warnings.class,
                    @user.validation_scope_proxy_for_warnings.to_model.class
+    end
+
+    should "return model_name of base_class" do
+      assert_equal 'User',
+                   @user.validation_scope_proxy_for_warnings.class.model_name
     end
   end
 end

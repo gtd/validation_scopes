@@ -23,8 +23,16 @@ module ValidationScopes
             @errors ||= ActiveModel::Errors.new(@base_record)
           end
 
+          # Hacks to support dynamic_model helpers
           def to_model
             self
+          end
+
+          # Rails 3 default implementation of model_name blows up for anonymous classes
+          class << self; self; end.class_eval do
+            define_method(:model_name) do
+              base_class.model_name
+            end
           end
         end
 
