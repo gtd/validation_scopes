@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{validation_scopes}
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Gabe da Silveira"]
-  s.date = %q{2011-02-24}
+  s.date = %q{2011-05-23}
   s.description = %q{Define additional sets of validations beyond the standard "errors" that is tied to the ActiveRecord life-cycle.  These additional sets can be defined with all the standard ActiveRecord::Validation macros, and the resulting collection is a standard ActiveRecord::Errors object.}
   s.email = %q{gabe@websaviour.com}
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/dasil003/validation_scopes}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.5.2}
   s.summary = %q{Create sets of validations independent of the life-cycle of an ActiveRecord object}
   s.test_files = [
     "test/db/schema.rb",
@@ -43,7 +43,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
