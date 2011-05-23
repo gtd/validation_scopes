@@ -22,6 +22,10 @@ module ValidationScopes
           define_method("errors") do
             @errors ||= ActiveModel::Errors.new(@base_record)
           end
+
+          def to_model
+            self
+          end
         end
 
         yield proxy_class

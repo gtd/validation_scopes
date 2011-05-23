@@ -1,3 +1,4 @@
+* Fix problem with scoped errors being lost by error_messages_for (dynamic_form plugin)
 * Fix Rails3 deprecation warnings
 
 == 0.3.1 2011-02-24
