@@ -1,3 +1,5 @@
+== 0.4.0 2011-05-23
+
 * Fixed problem with #model_name on proxy class (dynamic_form plugin)
 * Fixed problem with scoped errors being lost by error_messages_for (dynamic_form plugin)
 * Fixed Rails3 deprecation warnings
