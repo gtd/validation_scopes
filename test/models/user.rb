@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def age_under_100
-    alerts.add_to_base("We have a centenarian on our hands") if age && age >= 100
+    alerts.add(:base, "We have a centenarian on our hands") if age && age >= 100
   end
 end

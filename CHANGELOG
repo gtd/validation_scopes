@@ -1,3 +1,5 @@
+* Fix Rails3 deprecation warnings
+
 == 0.3.1 2011-02-24
 
 * Added Rails3 compatibility

@@ -18,13 +18,13 @@ class TestValidationScopes < Test::Unit::TestCase
     should "raise warning if age set negative" do
       @user.age = -1
       assert @user.has_warnings?
-      assert @user.warnings.on(:age)
+      assert @user.warnings[:age].any?
     end
 
     should "raise warning for inline validation" do
       @user.sponsor_id = 12345
       assert @user.has_warnings?
-      assert @user.warnings.on(:sponsor_id)
+      assert @user.warnings[:sponsor_id].any?
     end
 
     should "not add warning to main errors instance" do
@@ -48,8 +48,8 @@ class TestValidationScopes < Test::Unit::TestCase
 
       should "set alerts but not errors" do
         assert @user.has_alerts?, "no alerts raised"
-        assert @user.alerts.on(:base), "centenarian alert not raised"
-        assert @user.alerts.on(:email), "hotmail alert not raised"
+        assert @user.alerts[:base], "centenarian alert not raised"
+        assert @user.alerts[:email], "hotmail alert not raised"
         assert @user.valid?, "user not valid"
         assert @user.errors.empty?, "user errors not empty"
       end
