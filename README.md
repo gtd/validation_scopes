@@ -57,7 +57,11 @@ does not accept an `ActiveRecord::Errors` object directly.  Instead you need to 
 
 ## Compatibility
 
-Should work for Ruby 1.8 and 1.9, as well as Rails 2.x and 3.x; Battle-tested in the formers.
+The current version should work for Rails 3 on Ruby 1.8 or 1.9; Battle-tested in the former.
+
+For Rails 2 see the 0.3.x version of the gem which is maintained on the [rails2
+branch](https://github.com/dasil003/validation_scopes/tree/rails2)
+
 
 ## Installation
 
@@ -69,7 +73,7 @@ In your Gemfile:
 
     gem 'validation_scopes'
 
-Or old-school Rails-style, in your environment.rb:
+Or old-school-Rails-style, in your environment.rb:
 
     config.gem 'validation_scopes'
 
@@ -99,8 +103,8 @@ about the design process](http://www.darwinweb.net/articles/80) is on my blog.
 
 ## TODO
 
-* In Rails 3 validations are no longer coupled to ActiveRecord.  As part of of ActiveModel, validations can be included
-  in any object.  It shouldn't be too much work to make validation_scopes work with arbitrary models as well.
+* In Rails 3 validations are no longer coupled to ActiveRecord.  Although the current version of the gem uses
+  ActiveModel, it hasn't been tested against arbitrary objects.
 
 
 ## Copyright
