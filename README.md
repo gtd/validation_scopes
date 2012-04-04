@@ -46,6 +46,9 @@ previous example:
     film.errors.full_messages
     => []
 
+    film.class.all_scopes
+    => [:warnings]
+
     film.save
     => true
 
