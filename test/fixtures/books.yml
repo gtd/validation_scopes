@@ -1,0 +1,12 @@
+one:
+  id: 1
+  title: Feature Selection for Knowledge Discovery and Data Mining
+  author: Huan Liu
+  isbn: 9780792381983
+  user_id: 1
+two:
+  id: 2
+  title: SSL and TLS - theory and practice
+  author: Rolf Oppliger
+  isbn: 9781596934474
+  user_id: 1

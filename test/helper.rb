@@ -13,7 +13,8 @@ ActiveRecord::Base.establish_connection(
 
 require 'db/schema.rb'
 
-Dir['test/models/*.rb'].each { |f| require f }
+# Ruby 1.9.3 -> './test/...' not 'test/...'
+Dir['./test/models/*.rb'].each { |f| require f }
 
 require 'active_record/fixtures'
 Fixtures.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)

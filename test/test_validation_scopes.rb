@@ -73,4 +73,21 @@ class TestValidationScopes < Test::Unit::TestCase
                    @user.validation_scope_proxy_for_warnings.class.model_name
     end
   end
+
+  context "scopes per model" do
+    setup do
+      @user = User.find(1)
+      @book = Book.find(1)
+      @book2 = Book.find(2)
+    end
+
+    should "return all the scopes declared in User model" do
+      assert_equal [:warnings, :alerts], @user.class.all_scopes 
+    end
+
+    should "return all the scopes declared in Book model" do
+      assert_equal [:warnings_book, :alerts_book], @book.class.all_scopes 
+      assert_equal [:warnings_book, :alerts_book], @book2.class.all_scopes 
+    end
+  end
 end
