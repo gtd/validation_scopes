@@ -1,3 +1,5 @@
+* Added the method all_scopes that return all the scopes in a model
+
 == 0.4.0 2011-05-23
 
 * Fixed problem with #model_name on proxy class (dynamic_form plugin)
