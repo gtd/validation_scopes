@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'test/unit'
 require 'shoulda'
 
@@ -16,4 +15,7 @@ require 'db/schema.rb'
 Dir['./test/models/*.rb'].each { |f| require f }
 
 require 'active_record/fixtures'
-Fixtures.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)
+
+fixtures_constant = defined?(ActiveRecord::Fixtures) ? ActiveRecord::Fixtures : Fixtures
+
+fixtures_constant.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)
