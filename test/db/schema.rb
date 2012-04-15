@@ -13,5 +13,4 @@ ActiveRecord::Schema.define do
     t.column "isbn",       :integer
     t.column "user_id",    :integer
   end
-
 end

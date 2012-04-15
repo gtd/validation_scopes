@@ -7,7 +7,6 @@ module ValidationScopes
   end
 
   module ClassMethods
-    
     def validation_scope(scope)
       base_class = self
       @all_scopes ||= []
@@ -44,7 +43,7 @@ module ValidationScopes
           class << self; self; end.class_eval do
             define_method(:model_name) do
               base_class.model_name
-            end 
+            end
           end
         end
 
@@ -52,7 +51,7 @@ module ValidationScopes
 
         proxy_class
       end
-      
+
       define_method(scope) do
         send("validation_scope_proxy_for_#{scope}").errors
       end
@@ -70,7 +69,7 @@ module ValidationScopes
           klass = deferred_proxy_class_declaration.call
           instance_variable_set("@#{scope}", klass.new(self))
         end
-      end 
+      end
 
       define_method("validation_scope_proxy_for_#{scope}") do
         send "init_validation_scope_for_#{scope}"

@@ -1,5 +1,4 @@
 class Book < ActiveRecord::Base
-  
   belongs_to :user
 
   validates_presence_of :title
@@ -11,5 +10,4 @@ class Book < ActiveRecord::Base
   validation_scope :alerts_book do |s|
     s.validates_presence_of :isbn
   end
-
 end

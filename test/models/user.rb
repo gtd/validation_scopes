@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  
   belongs_to :sponsor, :class_name => 'User'
   has_many :books
 
