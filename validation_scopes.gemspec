@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{validation_scopes}
-  s.version = "0.4.0"
+  s.name = "validation_scopes"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Gabe da Silveira"]
-  s.date = %q{2011-05-23}
-  s.description = %q{Define additional sets of validations beyond the standard "errors" that is tied to the ActiveRecord life-cycle.  These additional sets can be defined with all the standard ActiveRecord::Validation macros, and the resulting collection is a standard ActiveRecord::Errors object.}
-  s.email = %q{gabe@websaviour.com}
+  s.date = "2012-04-15"
+  s.description = "Define additional sets of validations beyond the standard \"errors\" that is tied to the ActiveRecord life-cycle.  These additional sets can be defined with all the standard ActiveRecord::Validation macros, and the resulting collection is a standard ActiveRecord::Errors object."
+  s.email = "gabe@websaviour.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -25,22 +25,18 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/validation_scopes.rb",
     "test/db/schema.rb",
+    "test/fixtures/books.yml",
     "test/fixtures/users.yml",
     "test/helper.rb",
+    "test/models/book.rb",
     "test/models/user.rb",
     "test/test_validation_scopes.rb",
     "validation_scopes.gemspec"
   ]
-  s.homepage = %q{http://github.com/dasil003/validation_scopes}
+  s.homepage = "http://github.com/dasil003/validation_scopes"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
-  s.summary = %q{Create sets of validations independent of the life-cycle of an ActiveRecord object}
-  s.test_files = [
-    "test/db/schema.rb",
-    "test/helper.rb",
-    "test/models/user.rb",
-    "test/test_validation_scopes.rb"
-  ]
+  s.rubygems_version = "1.8.22"
+  s.summary = "Create sets of validations independent of the life-cycle of an ActiveRecord object"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
