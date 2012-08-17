@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "test/test_validation_scopes.rb",
     "validation_scopes.gemspec"
   ]
-  s.homepage = "http://github.com/dasil003/validation_scopes"
+  s.homepage = "http://github.com/gtd/validation_scopes"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.22"
   s.summary = "Create sets of validations independent of the life-cycle of an ActiveRecord object"

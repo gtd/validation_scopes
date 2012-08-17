@@ -63,7 +63,7 @@ does not accept an `ActiveRecord::Errors` object directly.  Instead you need to 
 The current version should work for Rails 3 on Ruby 1.8 or 1.9; Battle-tested in the former.
 
 For Rails 2 see the 0.3.x version of the gem which is maintained on the [rails2
-branch](https://github.com/dasil003/validation_scopes/tree/rails2)
+branch](https://github.com/gtd/validation_scopes/tree/rails2)
 
 
 ## Installation
