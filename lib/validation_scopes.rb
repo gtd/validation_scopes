@@ -8,18 +8,14 @@ module ValidationScopes
 
   module ClassMethods
     def validation_scope(scope)
-      base_class = self
       @all_scopes ||= []
-      class << self
-        def all_scopes=(scope)
-          @all_scopes << scope
-        end
+      @all_scopes << scope
 
-        def all_scopes
-          @all_scopes
-        end
+      def self.all_scopes
+        @all_scopes
       end
-      self.all_scopes = scope
+
+      base_class = self
 
       proxy_class = Class.new(DelegateClass(base_class)) do
         include ActiveModel::Validations
