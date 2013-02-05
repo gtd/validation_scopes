@@ -1,6 +1,8 @@
+version = File.read(File.expand_path("VERSION",__FILE__)).strip
+
 Gem::Specification.new do |s|
   s.name = "validation_scopes"
-  s.version = "0.4.1"
+  s.version = version
 
   s.authors = ["Gabe da Silveira"]
   s.date = "2012-04-15"
