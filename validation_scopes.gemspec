@@ -5,7 +5,6 @@ Gem::Specification.new do |s|
   s.version = version
 
   s.authors = ["Gabe da Silveira"]
-  s.date = "2012-04-15"
   s.description = "Define additional sets of validations beyond the standard \"errors\" that is tied to the ActiveRecord life-cycle.  These additional sets can be defined with all the standard ActiveRecord::Validation macros, and the resulting collection is a standard ActiveRecord::Errors object."
   s.email = "gabe@websaviour.com"
   s.extra_rdoc_files = [
