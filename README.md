@@ -60,10 +60,20 @@ does not accept an `ActiveRecord::Errors` object directly.  Instead you need to 
 
 ## Compatibility
 
-The current version should work for Rails 3 on Ruby 1.8 or 1.9; Battle-tested in the former.
+The current version should work for Rails >= 3.0 and Ruby >= 1.9.2.
+
+For Rails 3 and Ruby 1.8.x use version 0.4.x, however **beware there is a memory leak in this version** as described
+[here](http://siliconsenthil.in/blog/2013/01/19/validation-scopes-leaks-memory/)
 
 For Rails 2 see the 0.3.x version of the gem which is maintained on the [rails2
 branch](https://github.com/gtd/validation_scopes/tree/rails2)
+
+Why no Ruby 1.8.7 support?  Because fixing the memory leak was easy in Ruby 1.9 by removing the deferred proxy class
+definition, however this does not work in Ruby 1.8.7 because the ActiveRecord objects methods are not found.  The
+development of this was described in a [blog article about the design process](http://www.darwinweb.net/articles/80).
+I didn't take the time to figure out why this started working in Ruby 1.9.x (smells like something to do with
+`instance_eval`) but it does, and I have no inclination to fix issues in 1.8.x anymore.  If you happen to know why
+offhand though, I'd be glad to hear the reason.
 
 
 ## Installation
@@ -85,23 +95,10 @@ Outside of Rails:
     require 'validation_scopes'
 
 
-## Caveats
-
-Due to the use of a proxy DelegateClass to store each additional set of validations, and some heavy meta-programming to
-tie it all together with a clean API, there are likely to be some weird edge cases.  Please let me know if you discover
-anything wonky.  I believe the opacity of the solution is worth the convenience it provides in exposing the entirety of
-the Validations API.
-
 ### Don't use private methods
 
 Because the any validation method supplied as a symbol (eg. `validate :verify_something`) is actually running in the
 context of a delegate class, private methods won't work as they would in standard validations.
-
-
-## Implementation
-
-I had a lot of fun writing this gem even though the result isn't exactly a shining example elegant code.  An [article
-about the design process](http://www.darwinweb.net/articles/80) is on my blog.
 
 
 ## TODO
@@ -112,4 +109,4 @@ about the design process](http://www.darwinweb.net/articles/80) is on my blog.
 
 ## Copyright
 
-Copyright (c) 2010,2011 Gabe da Silveira. See LICENSE for details.
+Copyright (c) 2010-2013 Gabe da Silveira. See LICENSE for details.
