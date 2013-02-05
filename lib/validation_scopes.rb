@@ -25,11 +25,6 @@ module ValidationScopes
           super(record)
         end
 
-        # Hack since DelegateClass doesn't seem to be making AR::Base class methods available.
-        define_method("errors") do
-          @errors ||= ActiveModel::Errors.new(@base_record)
-        end
-
         # Hacks to support dynamic_model helpers
         def to_model
           self
