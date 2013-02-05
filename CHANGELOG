@@ -1,5 +1,6 @@
-== Unreleased
+== 0.5.1 2013-02-05
 
+* Requires 1.9.2
 * Fix for memory leak described at http://siliconsenthil.in/blog/2013/01/19/validation-scopes-leaks-memory/
 * Cleaned up .gemspec and removed unnecessary files from distribution
 * Set up Gemfile for development
