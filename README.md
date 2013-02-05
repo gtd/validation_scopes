@@ -70,7 +70,7 @@ branch](https://github.com/gtd/validation_scopes/tree/rails2)
 
 Why no Ruby 1.8.7 support?  Because fixing the memory leak was easy in Ruby 1.9 by removing the deferred proxy class
 definition, however this does not work in Ruby 1.8.7 because the ActiveRecord objects methods are not found.  The
-development of this was described in a [blog article about the design process](http://www.darwinweb.net/articles/80).
+development of this was described in a [blog article about the design process](http://darwinweb.net/articles/80).
 I didn't take the time to figure out why this started working in Ruby 1.9.x (smells like something to do with
 `instance_eval`) but it does, and I have no inclination to fix issues in 1.8.x anymore.  If you happen to know why
 offhand though, I'd be glad to hear the reason.
