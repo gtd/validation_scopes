@@ -4,6 +4,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'validation_scopes'
 
+puts "Testing against ActiveRecord #{ActiveRecord::VERSION::STRING}"
+
 ActiveRecord::Base.establish_connection(
   :adapter  => "sqlite3",
   :database => ":memory:"

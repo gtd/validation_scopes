@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.22"
   s.summary = "Create sets of validations independent of the life-cycle of an ActiveRecord object"
 
-  s.add_dependency 'activerecord'
+  s.add_dependency 'activerecord', '~> 3.0'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'sqlite3'
