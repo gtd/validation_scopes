@@ -14,16 +14,22 @@ class TestValidationScopes < MiniTest::Unit::TestCase
     assert @user.no_warnings?
   end
 
-  def test_a_warning
+  def test_a_macro
     @user.age = -1
     assert @user.has_warnings?
     assert @user.warnings[:age].any?
   end
 
-  def test_an_inline_warning
+  def test_an_inline_error
     @user.sponsor_id = 12345
     assert @user.has_warnings?
     assert @user.warnings[:sponsor_id].any?
+  end
+
+  def test_a_symbol_error
+    @user.age = 100
+    assert @user.has_alerts?
+    assert @user.alerts[:base]
   end
 
   def test_that_warnings_do_not_impact_main_errors
@@ -41,11 +47,14 @@ class TestValidationScopes < MiniTest::Unit::TestCase
 
   def test_multiple_scopes
     @user.age = 100
-    @user.email = "zappa@hotmail.com"
+    @user.email = "invalidemail"
 
     assert @user.has_alerts?, "no alerts raised"
+    assert @user.has_warnings?, "no warnings raised"
+    assert_equal 1, @user.alerts.size
+    assert_equal 2, @user.warnings.size
     assert @user.alerts[:base], "centenarian alert not raised"
-    assert @user.alerts[:email], "hotmail alert not raised"
+    assert @user.warnings[:email], "email warning not raised"
     assert @user.valid?, "user not valid"
     assert @user.errors.empty?, "user errors not empty"
   end
