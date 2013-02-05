@@ -1,6 +1,9 @@
 == Unreleased
 
 * Fix for memory leak described at http://siliconsenthil.in/blog/2013/01/19/validation-scopes-leaks-memory/
+* Cleaned up .gemspec and removed unnecessary files from distribution
+* Set up Gemfile for development
+* Simplified test suite to use pure minitest
 
 == 0.4.1 2012-04-15
 
