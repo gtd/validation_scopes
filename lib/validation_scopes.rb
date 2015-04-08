@@ -33,11 +33,7 @@ module ValidationScopes
 
       base_class = self
 
-      superclass = if self.superclass.validation_proxies[scope]
-                     self.superclass.validation_proxies[scope]
-                   else
-                     DelegateClass(base_class)
-                   end
+      superclass = self.superclass.validation_proxies[scope] || DelegateClass(base_class)
       proxy_class = Class.new(superclass) do
         include ActiveModel::Validations
 
