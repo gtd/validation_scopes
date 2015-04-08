@@ -14,23 +14,31 @@ module ValidationScopes
         r.marked_for_destruction? || r.send("no_#{options[:scope]}?")
       end
       unless all_valid
-        record.errors.add(attribute, :invalid, options.merge(:value => value))
+        record.errors.add(attribute, 'is invalid')
       end
     end
   end
 
   module ClassMethods
-    def validation_scope(scope)
-      @all_scopes ||= []
-      @all_scopes << scope
+    def validation_scopes
+      @validation_scopes ||= []
+    end
 
-      def self.all_scopes
-        @all_scopes
-      end
+    def validation_proxies
+      @validation_proxies ||= {}
+    end
+
+    def validation_scope(scope)
+      validation_scopes << scope
 
       base_class = self
 
-      proxy_class = Class.new(DelegateClass(base_class)) do
+      superclass = if self.superclass.validation_proxies[scope]
+                     self.superclass.validation_proxies[scope]
+                   else
+                     DelegateClass(base_class)
+                   end
+      proxy_class = Class.new(superclass) do
         include ActiveModel::Validations
 
         @scope = scope
@@ -56,6 +64,8 @@ module ValidationScopes
           end
         end
       end
+
+      validation_proxies[scope] = proxy_class
 
       yield proxy_class
 
