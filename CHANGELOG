@@ -1,5 +1,6 @@
 == Unreleased
 
+* Fix Rails 4.2 deprecations and breakages (Tamás Michelberger)
 * Loosen version constraints to allow Rails 4 (Ivan Tkalin)
 
 == 0.5.1 2013-02-05
