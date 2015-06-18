@@ -1,7 +1,5 @@
 source "http://www.rubygems.org"
 
-gemspec
+gem 'appraisal'
 
-# To test different supported major versions:
-#gem 'activerecord', '~> 3.0.0'
-#gem 'activerecord', '~> 3.1.0'
+gemspec
