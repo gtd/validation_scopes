@@ -25,5 +25,7 @@ else
   Fixtures
 end
 
+base_test_class = defined?(Minitest::Test) ? Minitest::Test : MiniTest::Unit::TestCase
+class TestCase < base_test_class; end
 
 fixtures_constant.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)

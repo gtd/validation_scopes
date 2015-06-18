@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestValidationScopes < MiniTest::Test
+class TestValidationScopes < TestCase
   def setup
     @user = User.find(1)
   end
