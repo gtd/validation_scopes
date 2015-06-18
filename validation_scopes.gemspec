@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
-    "CHANGELOG",
+    "CHANGELOG.md",
     "LICENSE",
     "README.md",
     "lib/validation_scopes.rb"
