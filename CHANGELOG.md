@@ -1,4 +1,4 @@
-# Unreleased
+# 0.5.2 - 2015-06-18
 
 * Fix Rails 4.2 deprecations and breakages (Tamás Michelberger)
 * Loosen version constraints to allow Rails 4 (Ivan Tkalin)
