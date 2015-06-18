@@ -1,6 +1,6 @@
-== 0.6.0 2014-02-22
+== Unreleased
 
-* Rails 4.0 and 4.1 compatibility
+* Loosen version constraints to allow Rails 4 (Ivan Tkalin)
 
 == 0.5.1 2013-02-05
 
