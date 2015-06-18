@@ -17,6 +17,13 @@ Dir['./test/models/*.rb'].each { |f| require f }
 
 require 'active_record/fixtures'
 
-fixtures_constant = defined?(ActiveRecord::Fixtures) ? ActiveRecord::Fixtures : Fixtures
+fixtures_constant = if defined?(ActiveRecord::FixtureSet)
+  ActiveRecord::FixtureSet
+elsif defined?(ActiveRecord::Fixtures)
+  ActiveRecord::Fixtures
+else
+  Fixtures
+end
+
 
 fixtures_constant.create_fixtures('test/fixtures/', ActiveRecord::Base.connection.tables)

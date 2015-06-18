@@ -10,7 +10,7 @@ ActiveRecord::Schema.define do
   create_table "books" do |t|
     t.column "title",      :string
     t.column "author",     :string
-    t.column "isbn",       :integer
+    t.column "isbn",       :string
     t.column "user_id",    :integer
   end
 end

@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestMemoryLeak < MiniTest::Unit::TestCase
+class TestMemoryLeak < MiniTest::Test
   def test_should_not_leak_proxy_class
     ids = 2.times.map do
       user = User.new
