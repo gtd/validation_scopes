@@ -68,13 +68,6 @@ For Rails 3 and Ruby 1.8.x use version 0.4.x, however **beware there is a memory
 For Rails 2 see the 0.3.x version of the gem which is maintained on the [rails2
 branch](https://github.com/gtd/validation_scopes/tree/rails2)
 
-Why no Ruby 1.8.7 support?  Because fixing the memory leak was easy in Ruby 1.9 by removing the deferred proxy class
-definition, however this does not work in Ruby 1.8.7 because the ActiveRecord objects methods are not found.  The
-development of this was described in a [blog article about the design process](http://darwinweb.net/articles/80).
-I didn't take the time to figure out why this started working in Ruby 1.9.x (smells like something to do with
-`instance_eval`) but it does, and I have no inclination to fix issues in 1.8.x anymore.  If you happen to know why
-offhand though, I'd be glad to hear the reason.
-
 
 ## Installation
 
@@ -86,11 +79,7 @@ In your Gemfile:
 
     gem 'validation_scopes'
 
-Or old-school-Rails-style, in your environment.rb:
-
-    config.gem 'validation_scopes'
-
-Outside of Rails:
+Or without Bundler:
 
     require 'validation_scopes'
 
@@ -109,4 +98,4 @@ context of a delegate class, private methods won't work as they would in standar
 
 ## Copyright
 
-Copyright (c) 2010-2013 Gabe da Silveira. See LICENSE for details.
+Copyright (c) 2010-2015 Gabe da Silveira. See LICENSE for details.
