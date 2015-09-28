@@ -18,6 +18,11 @@ module ValidationScopes
       base_class = self
 
       proxy_class = Class.new(DelegateClass(base_class)) do
+        if defined?(ActiveRecord) && base_class.superclass == ActiveRecord::Base
+          include ActiveRecord::Reflection
+          include ActiveRecord::Validations
+        end
+
         include ActiveModel::Validations
 
         def initialize(record)

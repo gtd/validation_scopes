@@ -10,4 +10,8 @@ class Book < ActiveRecord::Base
   validation_scope :alerts_book do |s|
     s.validates_presence_of :isbn
   end
+
+  validation_scope :alerts do |s|
+    s.validates_presence_of :isbn
+  end
 end
