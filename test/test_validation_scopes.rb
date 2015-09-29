@@ -73,6 +73,6 @@ class TestValidationScopes < TestCase
 
   def test_all_scopes
     assert_equal [:warnings, :alerts], User.all_scopes
-    assert_equal [:warnings_book, :alerts_book], Book.all_scopes
+    assert_equal [:warnings_book, :alerts_book, :alerts], Book.all_scopes
   end
 end
