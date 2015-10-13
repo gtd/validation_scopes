@@ -1,6 +1,6 @@
 require 'delegate'
 require 'active_record'
-require 'associated'
+require 'associated_scope_validator'
 
 module ValidationScopes
   def self.included(base) # :nodoc:
