@@ -5,6 +5,7 @@ ActiveRecord::Schema.define do
     t.column "age",        :integer
     t.column "bio",        :text
     t.column "sponsor_id", :integer
+    t.column "type",       :string
   end
 
   create_table "books" do |t|

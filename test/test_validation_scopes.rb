@@ -91,4 +91,18 @@ class TestValidationScopes < TestCase
     assert @user.books.first.has_alerts?
     assert @user.has_alerts?
   end
+
+  def test_sti_inheritance_of_scopes
+    user = User.find(3)
+    assert_instance_of ImportantUser, user
+    assert user.no_warnings?
+    # Make sure super class validations work
+    user.email = nil
+    assert user.has_warnings?
+    user.email = 'a@b.com'
+    assert user.no_warnings?
+    # Make sure child class validations work
+    user.bio = nil
+    assert user.has_warnings?
+  end
 end

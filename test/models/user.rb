@@ -26,3 +26,9 @@ class User < ActiveRecord::Base
     alerts.add(:base, "We have a centenarian on our hands") if age && age >= 100
   end
 end
+
+class ImportantUser < User
+  validation_scope :warnings do |s|
+    s.validates_presence_of :bio
+  end
+end
