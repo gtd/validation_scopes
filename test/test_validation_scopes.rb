@@ -73,7 +73,7 @@ class TestValidationScopes < TestCase
 
   def test_validation_scopes
     assert_equal [:warnings, :alerts], User.validation_scopes
-    assert_equal [:warnings_book, :alerts_book], Book.validation_scopes
+    assert_equal [:warnings_book, :alerts_book, :alerts], Book.validation_scopes
   end
 
   def test_validates_associated
@@ -82,5 +82,13 @@ class TestValidationScopes < TestCase
     @user.books.first.author = nil
     assert @user.books.first.has_warnings_book?
     assert @user.has_warnings?
+  end
+
+  def test_validates_associated_default_scope
+    assert !@user.has_alerts?
+    assert @user.books.none? { |b| b.has_alerts? }
+    @user.books.first.isbn = nil
+    assert @user.books.first.has_alerts?
+    assert @user.has_alerts?
   end
 end
