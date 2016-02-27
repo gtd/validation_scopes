@@ -75,4 +75,12 @@ class TestValidationScopes < TestCase
     assert_equal [:warnings, :alerts], User.validation_scopes
     assert_equal [:warnings_book, :alerts_book], Book.validation_scopes
   end
+
+  def test_validates_associated
+    assert !@user.has_warnings?
+    assert @user.books.none? { |b| b.has_warnings_book? }
+    @user.books.first.author = nil
+    assert @user.books.first.has_warnings_book?
+    assert @user.has_warnings?
+  end
 end

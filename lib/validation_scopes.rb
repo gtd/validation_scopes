@@ -40,7 +40,7 @@ module ValidationScopes
         @scope = scope
         def self.validates_associated(*attr_names)
           validates_with AssociatedValidator,
-            _merge_attributes(attr_names).merge(scope: @scope)
+            _merge_attributes(attr_names).reverse_merge(scope: @scope)
         end
 
         def initialize(record)
