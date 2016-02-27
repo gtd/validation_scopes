@@ -11,3 +11,10 @@ sponsored:
   age: 3
   bio: Alter-ego extraordinaire
   sponsor_id: 1
+important:
+  id: 3
+  name: Jeremy Mickelson
+  email: jeremy@mickelson.com
+  age: 27
+  bio: Super Hacker
+  type: ImportantUser
