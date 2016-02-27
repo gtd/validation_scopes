@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     s.validates_presence_of  :email
     s.validates_format_of    :email, :with => %r{\A.+@.+\Z}
     s.validates_inclusion_of :age, :in => 0..99
+    s.validates_associated   :books, scope: :warnings_book
     s.validate do |r|
       if r.sponsor_id.present? && r.sponsor.nil?
         r.warnings.add(:sponsor_id, "Sponsor ID was defined but record not present")
