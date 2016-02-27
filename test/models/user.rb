@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   validation_scope :alerts do |s|
     s.validate :age_under_100
+    s.validates_associated :books
     s.validate { |r| r.alerts.add(:email, "We have a hotmail user.") if r.email =~ %r{@hotmail\.com\Z} }
   end
 
