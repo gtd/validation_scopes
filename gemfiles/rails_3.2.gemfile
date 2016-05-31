@@ -4,5 +4,6 @@ source "http://www.rubygems.org"
 
 gem "appraisal"
 gem "activerecord", "~> 3.2.22"
+gem 'minitest' # To fix ruby 2.2 + rails 3.2 build
 
 gemspec :path => "../"
