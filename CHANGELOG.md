@@ -1,3 +1,8 @@
+# 0.6.0 - 2015-07-14
+
+* Add support for STI classes (Jeremy Mickelson)
+* Add support for validates_associated (Jeremy Mickelson)
+
 # 0.5.2 - 2015-06-18
 
 * Fix Rails 4.2 deprecations and breakages (Tamás Michelberger)
