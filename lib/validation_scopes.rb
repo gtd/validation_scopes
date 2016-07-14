@@ -57,7 +57,7 @@ module ValidationScopes
           # Before Rails 4.1 callback functions were created using the class
           # name, so we must name our anonymous classes.
           define_method(:name) do
-            "#{base_class.name}ValidationProxy"
+            "#{base_class.name}#{scope.to_s.classify}ValidationProxy"
           end
         end
       end
