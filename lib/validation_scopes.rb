@@ -43,20 +43,21 @@ module ValidationScopes
             _merge_attributes(attr_names).reverse_merge(scope: @scope)
         end
 
-        def initialize(record)
-          @base_record = record
-          super(record)
-        end
-
         # Hacks to support dynamic_model helpers
         def to_model
           self
         end
 
-        # Rails 3 default implementation of model_name blows up for anonymous classes
         class << self; self; end.class_eval do
+          # Rails 3 default implementation of model_name blows up for anonymous
+          # classes
           define_method(:model_name) do
             base_class.model_name
+          end
+          # Before Rails 4.1 callback functions were created using the class
+          # name, so we must name our anonymous classes.
+          define_method(:name) do
+            "#{base_class.name}ValidationProxy"
           end
         end
       end
@@ -78,14 +79,14 @@ module ValidationScopes
       end
 
       define_method("init_validation_scope_for_#{scope}") do
-        unless instance_variable_defined?("@#{scope}")
-          instance_variable_set("@#{scope}", proxy_class.new(self))
+        unless instance_variable_defined?("@validation_#{scope}")
+          instance_variable_set("@validation_#{scope}", proxy_class.new(self))
         end
       end
 
       define_method("validation_scope_proxy_for_#{scope}") do
         send "init_validation_scope_for_#{scope}"
-        instance_variable_get("@#{scope}")
+        instance_variable_get("@validation_#{scope}")
       end
     end
   end
