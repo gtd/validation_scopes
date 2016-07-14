@@ -71,8 +71,38 @@ class TestValidationScopes < TestCase
                  @user.validation_scope_proxy_for_warnings.class.model_name
   end
 
-  def test_all_scopes
-    assert_equal [:warnings, :alerts], User.all_scopes
-    assert_equal [:warnings_book, :alerts_book], Book.all_scopes
+  def test_validation_scopes
+    assert_equal [:warnings, :alerts], User.validation_scopes
+    assert_equal [:warnings_book, :alerts_book, :alerts], Book.validation_scopes
+  end
+
+  def test_validates_associated
+    assert !@user.has_warnings?
+    assert @user.books.none? { |b| b.has_warnings_book? }
+    @user.books.first.author = nil
+    assert @user.books.first.has_warnings_book?
+    assert @user.has_warnings?
+  end
+
+  def test_validates_associated_default_scope
+    assert !@user.has_alerts?
+    assert @user.books.none? { |b| b.has_alerts? }
+    @user.books.first.isbn = nil
+    assert @user.books.first.has_alerts?
+    assert @user.has_alerts?
+  end
+
+  def test_sti_inheritance_of_scopes
+    user = User.find(3)
+    assert_instance_of ImportantUser, user
+    assert user.no_warnings?
+    # Make sure super class validations work
+    user.email = nil
+    assert user.has_warnings?
+    user.email = 'a@b.com'
+    assert user.no_warnings?
+    # Make sure child class validations work
+    user.bio = nil
+    assert user.has_warnings?
   end
 end
