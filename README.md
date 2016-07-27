@@ -1,5 +1,8 @@
 # Validation Scopes [![Build Status](https://travis-ci.org/gtd/validation_scopes.svg?branch=master)](https://travis-ci.org/gtd/validation_scopes)
 
+***This fork of gtd/validation_scopes allows rails 5. It will be deleted as soon as the original project supports Rails 5***
+
+
 This gem adds a simple class method `validation_scope` to ActiveRecord.  This generates a new collection of
 `ActiveRecord::Errors` that can be manipulated independently of the standard `errors`, `valid?` and `save` methods.  The
 full power of ActiveRecord validations are preserved in these distinct error collections, including all the macros.
