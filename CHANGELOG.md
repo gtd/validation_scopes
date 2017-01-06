@@ -1,3 +1,7 @@
+# 0.6.1 - 2017-01-06
+
+* Allow Rails 5 (Marc van Eyken, James Adam)
+
 # 0.6.0 - 2015-07-14
 
 * Add support for STI classes (Jeremy Mickelson)
