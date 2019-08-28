@@ -1,3 +1,7 @@
+# 0.6.2 - 2019-08-28
+
+* Allow Rails 6 (James Adam)
+
 # 0.6.1 - 2017-01-06
 
 * Allow Rails 5 (Marc van Eyken, James Adam)
