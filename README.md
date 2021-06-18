@@ -1,4 +1,4 @@
-# Validation Scopes [![Build Status](https://travis-ci.org/gtd/validation_scopes.svg?branch=master)](https://travis-ci.org/gtd/validation_scopes)
+# Validation Scopes ![Tests](https://github.com/gtd/validation_scopes/actions/workflows/tests.yml/badge.svg)
 
 This gem adds a simple class method `validation_scope` to ActiveRecord.  This generates a new collection of
 `ActiveRecord::Errors` that can be manipulated independently of the standard `errors`, `valid?` and `save` methods.  The
