@@ -1,3 +1,7 @@
+# 0.6.3 - 2021-06-19
+
+* Allow Rails 6.1 (James Adam)
+
 # 0.6.2 - 2019-08-28
 
 * Allow Rails 6 (James Adam)
