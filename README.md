@@ -98,4 +98,4 @@ context of a delegate class, private methods won't work as they would in standar
 
 ## Copyright
 
-Copyright (c) 2010-2015 Gabe da Silveira. See LICENSE for details.
+Copyright (c) 2010-2021 Gabe da Silveira. See LICENSE for details.
